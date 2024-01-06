@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-const repo = "https://npjs.vercel.app/";
+const repo = "https://fresh-pwa-app.vercel.app";
 let deferredPrompt;
 
 function App() {
