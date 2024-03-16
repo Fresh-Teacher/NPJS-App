@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSEB Online Store</title>
+    <script src="https://kit.fontawesome.com/1935d064dd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        #store-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem;
+}
+
+footer.footer {
+    background-color: #ffb6c1; /* Baby pink color */
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+.footer p {
+    margin-top: 0.5px; /* Adjust the top margin */
+    margin-bottom: 2px; /* Adjust the bottom margin */
+}
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .filter-box select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        /* .main-container {
+            padding: 20px;
+        } */
+
+        .store-product {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .product-details {
+    padding: 20px;
+    background-color: rgb(211, 211, 211); /* Add your desired background color here */
+}
+
+
+        .product-details h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .product-details p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .product-details a {
+            display: inline-block;
+            background-color: #ff5f6d;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-details a:hover {
+            background-color: #e64c59;
+        }
+
+        .no-result {
+            text-align: center;
+            font-size: 18px;
+            color: #888;
+        }   
+         /* Custom CSS for navbar color */
+         .navbar-custom {
+            background-color: #ff2f00;
+            /* Change this color to your desired color */
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+            /* Change this color to your desired color */
+        }
+
+        .navbar-brand img {
+            max-height: 30px;
+            /* Adjust the max-height as needed */
+        }
+  /* Scroll to top button */
+  #scrollToTop {
+            display: none;
+            /* Initially hide the button */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #ff2f00;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        #scrollToTop:hover {
+            background-color: #ff5e3a;
+        }
+          /* Heart animation */
+          @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    .heart {
+        display: inline-block;
+        animation: heartbeat 1s infinite;
+        color: red; /* Add color property for red color */
+
+    }
+
+    .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    float: left;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+        </style>
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="OSEB_CHARGES-1_page-0001-removebg-preview.png" alt="Logo">
+                <!-- Replace 'your-logo.png' with the path to your logo -->
+                <b>OSEB  APP</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#exams">Exams <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schemes_of_work">Schemes of Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#textbooks">Textbooks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lesson_notes">Lesson Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#holiday_packages">Holiday Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#learners_workbooks"> Workbooks</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <p></p><br><br>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <div class="search-box">
+                <form action="" onsubmit="return false">
+                    <input type="text" id="search" placeholder="🔎 Search all products here..." />
+                </form>
+            </div>
+            <div class="filter-box">
+                <div class="filter-box">
+                    <select id="category-filter" onchange="filterCategory(event)">
+                        <option value="all">All Products</option>
+                        <option value="exams">Exams</option>
+                        <option value="schemes_of_work">Schemes of Work</option>
+                        <option value="textbooks">Textbooks</option>
+                        <option value="lesson_notes">Lesson Notes</option>
+                        <option value="holiday_packages">Holiday Packages</option>
+                        <option value="weekly_homeworks">Weekly Homeworks</option>
+                        <option value="topical_questions">Topical Questions</option>
+                        <option value="learners_workbooks">Learner's Workbooks</option>
+                        <option value="lesson_plan_templates">Lesson Plan Templates</option>
+                        <option value="ple_pamphlets">PLE Pamphlets</option>
+                        <option value="p7_topical_questions">P.7 Topical Questions</option>
+                        <option value="p7_special_sets_series">P7 Special Sets Series</option>
+                        <option value="interview_exams">Interview Exams</option>
+                        <option value="ple_spot_exams">PLE Spot Exams</option>
+                        <option value="book_cover_hardcopies">Book Cover Hardcopies</option>
+                        <option value="teachers_interview_papers">Teacher's Interview Papers</option>
+                        <option value="weekend_tests">Weekend Tests</option>
+                    </select>
+            </div>
+        </div>
+    </header>
+<br>
+ <!-- Main Content -->
+ <main>
+    <div id="app" class="container">
+        <!-- Cards will be dynamically generated here -->
+    </div>
+    <section id="store-products">
+        <!-- Generated Product Cards will be inserted here -->
+    </section>
+    <div class="container no-result">
+        <p>No more products to display! Try searching using a different name or contact us on <a href="tel:+256775787978"><br>0775787978 </a></p><br><br>
+    </div>
+</main>
+
+<!-- Bootstrap Warning Modal -->
+<div class="modal fade" id="passwordProtectedModal" tabindex="-1" role="dialog" aria-labelledby="passwordProtectedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <center><h5 class="modal-title" id="passwordProtectedModalLabel">ALERT ⚠️</h5></center>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          The file you have downloaded is password protected. Please contact us for further assistance...
+        </div>
+        <div class="modal-footer">
+          <!-- Button to request for password -->
+          <a href="whatsapp://send?phone=+256775787978&text=Hello,%20I%20hope%20you%20are%20doing%20well.%20I%20have%20downloaded%20a%20file%20from%20the%20OSEB%App%20and%20it%20appears%20to%20be%20password-protected.%20Could%20you%20kindly%20provide%20me%20with%20the%20password%20to%20access%20it?%20Thank%20you%20very%20much%20for%20your%20assistance.%20Best%20regards." class="btn btn-primary">REQUEST FOR PASSWORD 🔐</a>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">IGNORE</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+<script>
+// JSON data for products
+const products = [
+{
+  "category": "exams",
+  "name": "P.1 Science Exam",
+  "price": "UGX. 60,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "schemes_of_work",
+  "name": "P7 Mathematics Schemes of Work",
+  "price": "UGX. 5,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "textbooks",
+  "name": "P3 English Textbook",
+  "price": "UGX. 45,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "lesson_notes",
+  "name": "P6 History Lesson Notes",
+  "price": "UGX. 10,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "holiday_packages",
+  "name": "Christmas Holiday Package",
+  "price": "UGX. 80,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "weekly_homeworks",
+  "name": "Week 1 Homeworks",
+  "price": "UGX. 15,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "topical_questions",
+  "name": "Chemistry Topical Questions",
+  "price": "UGX. 25,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "learners_workbooks",
+  "name": "Physics Learner's Workbook",
+  "price": "UGX. 30,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "lesson_plan_templates",
+  "name": "Geography Lesson Plan Templates",
+  "price": "UGX. 8,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "ple_pamphlets",
+  "name": "P6 PLE Preparation Pamphlets",
+  "price": "UGX. 20,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "p7_topical_questions",
+  "name": "P.7 English Topical Questions",
+  "price": "UGX. 25,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "p7_special_sets_series",
+  "name": "P7 Special Sets Series",
+  "price": "UGX. 15,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "interview_exams",
+  "name": "Teacher's Interview Exams",
+  "price": "UGX. 10,000",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "ple_spot_exams",
+  "name": "PLE Spot Exams",
+  "price": "UGX. 12,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "book_cover_hardcopies",
+  "name": "Book Cover Hardcopies",
+  "price": "UGX. 200 and 100",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "teachers_interview_papers",
+  "name": "Teacher's Interview Papers",
+  "price": "UGX. 15,000",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "weekend_tests",
+  "name": "Weekend Tests",
+  "price": "UGX. 5,000 per class",
+   "isFree": false,
+   "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "exams",
+  "name": "P.1 Science Exam",
+  "price": "UGX. 60,000",
+  "isFree": false,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "schemes_of_work",
+  "name": "P7 Mathematics Schemes of Work",
+  "price": "UGX. 5,000",
+  "isFree": false,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "textbooks",
+  "name": "P3 English Textbook",
+  "price": "UGX. 45,000",
+  "isFree": false,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "lesson_notes",
+  "name": "P6 History Lesson Notes",
+  "price": "UGX. 10,000",
+  "isFree": false,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "holiday_packages",
+  "name": "Christmas Holiday Package",
+  "price": "UGX. 500", // Free item
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+},
+{
+  "category": "weekly_homeworks",
+  "name": "Week 1 Homeworks",
+  "price": "UGX. 500", // Free item
+  "link": "notes.pdf",
+  "isFree": true,
+  "pdflink": "locked files.zip", // PDF file link
+
+}
+];
+  
+// Function to render product cards
+function renderProductCards() {
+  const storeProductsContainer = document.getElementById('store-products');
+  const productCardTemplate = document.getElementById('product-card-template').innerHTML;
+
+  let productCardsHTML = '';
+  products.forEach(product => {
+    // Modify button text and link based on whether the item is free or not
+    let buttonText, buttonLink;
+    if (product.isFree) {
+      buttonText = "FREE DOWNLOAD";
+      buttonLink = product.link;
+    } else {
+      buttonText = "Order Now!";
+      buttonLink = product.link;
+    }
+
+    // Capitalize item name
+    const name = product.name.toUpperCase();
+
+    productCardsHTML += productCardTemplate
+      .replace('{{ category }}', product.category)
+      .replace('{{ name }}', name)
+      .replace('{{ price }}', product.isFree ? "FREE" : product.price) // Replace price with "FREE" if item is free
+      .replace('{{ button_text }}', buttonText)
+      .replace('{{ button_link }}', buttonLink);
+  });
+
+  storeProductsContainer.innerHTML = productCardsHTML;
+}
+
+// Function to render cards from items
+function renderCards(items) {
+  const app = document.getElementById('app');
+  let html = '';
+  items.forEach(item => {
+    html += generateCard(item);
+  });
+  app.innerHTML = html;
+}
+
+// Render cards when the page loads
+window.onload = function () {
+  if (typeof products !== 'undefined') {
+    renderProductCards(); // Render product cards if products variable is defined
+  } else {
+    renderCards(items); // Render normal cards if products variable is not defined
+  }
+};
+
+
+        // Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+ // Filter by category function
+ function filterCategory(event) {
+            var category = document.getElementById("category-filter").value;
+            var products = document.getElementsByClassName("store-product");
+
+            if (category === "all") {
+                for (var i = 0; i < products.length; i++) {
+                    products[i].style.display = "block";
+                }
+            } else {
+                for (var i = 0; i < products.length; i++) {
+                    var product = products[i];
+                    if (product.classList.contains(category)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Filter products by search input
+        const search = document.getElementById("search");
+        const productName = document.querySelectorAll(".product-details h2");
+        const noResult = document.querySelector(".no-result");
+
+        if (search) {
+            search.addEventListener("keyup", filterProducts);
+        }
+
+// Filter products by search input
+function filterProducts(e) {
+    const text = e.target.value.toLowerCase();
+    const productDetails = document.querySelectorAll(".product-details");
+
+    productDetails.forEach((product) => {
+        const productName = product.querySelector("h2").textContent.toLowerCase();
+
+        if (productName.includes(text)) {
+            product.parentElement.style.display = "block";
+        } else {
+            product.parentElement.style.display = "none";
+        }
+    });
+
+    // Show or hide the "no result" message based on the filtered products
+    const noResult = document.querySelector(".no-result");
+    const visibleProducts = document.querySelectorAll('.store-product[style="display: block;"]');
+
+    if (visibleProducts.length > 0) {
+        noResult.style.display = "none";
+    } else {
+        noResult.style.display = "block";
+    }
+}
+
+
+
+// Get the button
+var scrollToTopBtn = document.getElementById("scrollToTop");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function scrollToTop() {
+    // Scroll to top smoothly
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+ // When the DOM content is fully loaded, render the cards
+ document.addEventListener('DOMContentLoaded', function () {
+            // Define your items array with necessary data
+            const items = products; // Example: you can set items equal to products array
+
+            // Render cards when the page loads
+            renderCards(items);
+        });
+
+// When the DOM content is fully loaded, render the cards
+document.addEventListener('DOMContentLoaded', function () {
+      // Define your items array with necessary data
+      const items = products; // Assuming products array is defined elsewhere
+
+      // Render cards when the page loads
+      renderCards(items);
+    });
+
+    // Function to render cards from items
+    function renderCards(items) {
+      const app = document.getElementById('app');
+      let html = '';
+      items.forEach(item => {
+        html += generateCard(item);
+      });
+      app.innerHTML = html;
+    }
+
+    // Define the generateCard function
+    function generateCard(item) {
+      return `
+        <div class="store-product ${item.category}">
+            <div class="product-details">
+                <h2>${item.name}</h2>
+                <p>${item.price}</p>
+                <a href="${item.pdflink}" onclick="showPasswordProtectedModal()" download>
+                    <i class="fas fa-download"></i> <b>Order Now!</b>
+                </a>
+            </div>
+        </div>`;
+    }
+    
+
+    // Function to show password protected modal
+    function showPasswordProtectedModal() {
+      $('#passwordProtectedModal').modal('show');
+    }
+    </script>
+    <!-- <script src="script.js"></script> -->
+    <center><br><br><br><br>
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="container">
+                <p>&copy; 2024 OSEB</p>
+                <p>Coded with <span class="heart">&hearts;</span> by <a href="https://fresh-teacher.github.io"> Fresh Teacher</a></p>
+
+            </div>
+        </footer>
+        
+    </center>
+</body>
+
+</html>
