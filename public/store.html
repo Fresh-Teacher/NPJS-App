@@ -2,133 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OSEB Online Store</title>
-    <script src="https://kit.fontawesome.com/1935d064dd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Include Bootstrap JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach School Examinations Board</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
     <style>
-        #store-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 2rem;
-}
-
-footer.footer {
-    background-color: #ffb6c1; /* Baby pink color */
-    padding: 10px 0;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-size: 14px;
-}
-
-
-.footer p {
-    margin-top: 0.5px; /* Adjust the top margin */
-    margin-bottom: 2px; /* Adjust the bottom margin */
-}
-
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: #fff;
-            padding: 20px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .search-box {
-            margin-bottom: 20px;
-        }
-
-        .search-box input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .filter-box select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #fff;
-            cursor: pointer;
-        }
-
-        /* .main-container {
-            padding: 20px;
-        } */
-
-        .store-product {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .product-details {
-    padding: 20px;
-    background-color: rgb(211, 211, 211); /* Add your desired background color here */
-}
-
-
-        .product-details h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-
-        .product-details p {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .product-details a {
-            display: inline-block;
-            background-color: #ff5f6d;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .product-details a:hover {
-            background-color: #e64c59;
-        }
-
-        .no-result {
-            text-align: center;
-            font-size: 18px;
-            color: #888;
-        }   
-         /* Custom CSS for navbar color */
-         .navbar-custom {
+        /* Custom CSS for navbar color */
+        .navbar-custom {
             background-color: #ff2f00;
             /* Change this color to your desired color */
         }
@@ -143,8 +27,44 @@ footer.footer {
             max-height: 30px;
             /* Adjust the max-height as needed */
         }
-  /* Scroll to top button */
-  #scrollToTop {
+
+        /* Shaking animation */
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .btn-shake {
+            animation: shake 0.9s infinite;
+        }
+
+
+
+        /* Black text in the jumbotron */
+        .jumbotron .lead {
+            color: transparent;
+            /* Make the text transparent */
+        }
+
+        /* Scroll to top button */
+        #scrollToTop {
             display: none;
             /* Initially hide the button */
             position: fixed;
@@ -157,15 +77,33 @@ footer.footer {
             background-color: #ff2f00;
             color: #ffffff;
             cursor: pointer;
-            padding: 10px;
+            padding: 15px;
             border-radius: 50%;
         }
 
         #scrollToTop:hover {
             background-color: #ff5e3a;
         }
-          /* Heart animation */
-          @keyframes heartbeat {
+          /* Confetti CSS */
+          .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+            /* Shakes animation */
+    @keyframes shakes {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0); }
+    }
+
+    .btn-shakes {
+        animation: shakes 1s infinite;
+    }
+        /* Heart animation */
+        @keyframes heartbeat {
         0% { transform: scale(1); }
         50% { transform: scale(1.2); }
         100% { transform: scale(1); }
@@ -177,31 +115,20 @@ footer.footer {
         color: red; /* Add color property for red color */
 
     }
-
-    .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: 200px;
-    float: left;
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-        </style>
+    </style>
 </head>
 
 <body>
+      <!-- Confetti canvas -->
+      <canvas class="confetti" id="canvas"></canvas>
+
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="OSEB_CHARGES-1_page-0001-removebg-preview.png" alt="Logo">
+                <img src="https://oseb.vercel.app/OSEB_CHARGES-1_page-0001-removebg-preview.png" alt="Logo">
                 <!-- Replace 'your-logo.png' with the path to your logo -->
-                <b>OSEB  APP</b>
+                OSEB
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -235,451 +162,330 @@ footer.footer {
 
     <!-- Scroll to top button -->
     <button id="scrollToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- Navigation Bar -->
-    <header>
-        <div class="container">
-            <div class="search-box">
-                <form action="" onsubmit="return false">
-                    <input type="text" id="search" placeholder="🔎 Search all products here..." />
-                </form>
-            </div>
-            <div class="filter-box">
-                <div class="filter-box">
-                    <select id="category-filter" onchange="filterCategory(event)">
-                        <option value="all">All Products</option>
-                        <option value="exams">Exams</option>
-                        <option value="schemes_of_work">Schemes of Work</option>
-                        <option value="textbooks">Textbooks</option>
-                        <option value="lesson_notes">Lesson Notes</option>
-                        <option value="holiday_packages">Holiday Packages</option>
-                        <option value="weekly_homeworks">Weekly Homeworks</option>
-                        <option value="topical_questions">Topical Questions</option>
-                        <option value="learners_workbooks">Learner's Workbooks</option>
-                        <option value="lesson_plan_templates">Lesson Plan Templates</option>
-                        <option value="ple_pamphlets">PLE Pamphlets</option>
-                        <option value="p7_topical_questions">P.7 Topical Questions</option>
-                        <option value="p7_special_sets_series">P7 Special Sets Series</option>
-                        <option value="interview_exams">Interview Exams</option>
-                        <option value="ple_spot_exams">PLE Spot Exams</option>
-                        <option value="book_cover_hardcopies">Book Cover Hardcopies</option>
-                        <option value="teachers_interview_papers">Teacher's Interview Papers</option>
-                        <option value="weekend_tests">Weekend Tests</option>
-                    </select>
-            </div>
-        </div>
+    <center>
+        <!-- Image for exams section -->
+        <img src="https://oseb.vercel.app/OSEB CHARGES-1_page-0001.jpg" alt="OSEB Logo" class="img-fluid w-100">
+    </center>
+    <header class="container mt-5 text-center">
+        <h1>Welcome to OSEB</h1>
+        <p>We are delighted to have you here! Explore our packages and empower your educational journey.</p>
+        <a href="OSEB CHARGES.pdf" class="btn btn-primary btn-shakes">Download Packages ↓</a>
     </header>
-<br>
- <!-- Main Content -->
- <main>
-    <div id="app" class="container">
-        <!-- Cards will be dynamically generated here -->
-    </div>
-    <section id="store-products">
-        <!-- Generated Product Cards will be inserted here -->
+    
+    <section id="exams" class="container mt-5">
+        <h3>Exams</h3>
+        <p>Prepare for your academic journey with our comprehensive range of exams. Thousands of teachers have utilized
+            our exams and witnessed remarkable improvements in their pupils' performance. With a wide variety of
+            subjects and levels covered, our exams are designed to challenge and motivate learners to excel. <p></p>Avail the
+            soft copy of our exams at a nominal price of only Shs. 60,000.</p>
+        <a href="https://fresh-teacher.github.io/" class="btn btn-danger btn-shake">Purchase Now ➮ </a>
     </section>
-    <div class="container no-result">
-        <p>No more products to display! Try searching using a different name or contact us on <a href="tel:+256775787978"><br>0775787978 </a></p><br><br>
-    </div>
-</main>
 
-<!-- Bootstrap Warning Modal -->
-<div class="modal fade" id="passwordProtectedModal" tabindex="-1" role="dialog" aria-labelledby="passwordProtectedModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <center><h5 class="modal-title" id="passwordProtectedModalLabel">ALERT ⚠️</h5></center>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          The file you have downloaded is password protected. Please contact us for further assistance...
-        </div>
-        <div class="modal-footer">
-          <!-- Button to request for password -->
-          <a href="whatsapp://send?phone=+256775787978&text=Hello,%20I%20hope%20you%20are%20doing%20well.%20I%20have%20downloaded%20a%20file%20from%20the%20OSEB%App%20and%20it%20appears%20to%20be%20password-protected.%20Could%20you%20kindly%20provide%20me%20with%20the%20password%20to%20access%20it?%20Thank%20you%20very%20much%20for%20your%20assistance.%20Best%20regards." class="btn btn-primary">REQUEST FOR PASSWORD 🔐</a>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">IGNORE</button>
+    <section id="schemes_of_work" class="container mt-5">
+        <h3>Schemes of Work</h3>
+        <p>Explore our meticulously crafted schemes of work tailored to meet the diverse needs of educators. Our schemes
+            of work have been praised by educators worldwide for their clarity, effectiveness, and alignment with
+            curriculum standards. Join the thousands of satisfied teachers who have successfully implemented our schemes
+            of work and witnessed remarkable improvements in pupil engagement and achievement.
+        <p></p>Get the soft copies of our schemes of work for only Shs. 5,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  
+    <section id="textbooks" class="container mt-5">
+        <h3>Textbooks</h3>
+        <p>Browse through our extensive collection of textbooks, carefully curated to support effective teaching and
+            learning. Our textbooks have received rave reviews from educators for their comprehensive coverage, clarity,
+            and engaging content. A lot of teachers have trusted our textbooks to deliver quality education and inspire
+            pupils to reach their full potential.
+        <p></p> Get the soft copies of our textbooks at a budget-friendly price.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-<script>
-// JSON data for products
-const products = [
-{
-  "category": "exams",
-  "name": "P.1 Science Exam",
-  "price": "UGX. 60,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "schemes_of_work",
-  "name": "P7 Mathematics Schemes of Work",
-  "price": "UGX. 5,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "textbooks",
-  "name": "P3 English Textbook",
-  "price": "UGX. 45,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "lesson_notes",
-  "name": "P6 History Lesson Notes",
-  "price": "UGX. 10,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "holiday_packages",
-  "name": "Christmas Holiday Package",
-  "price": "UGX. 80,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "weekly_homeworks",
-  "name": "Week 1 Homeworks",
-  "price": "UGX. 15,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "topical_questions",
-  "name": "Chemistry Topical Questions",
-  "price": "UGX. 25,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "learners_workbooks",
-  "name": "Physics Learner's Workbook",
-  "price": "UGX. 30,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "lesson_plan_templates",
-  "name": "Geography Lesson Plan Templates",
-  "price": "UGX. 8,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "ple_pamphlets",
-  "name": "P6 PLE Preparation Pamphlets",
-  "price": "UGX. 20,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "p7_topical_questions",
-  "name": "P.7 English Topical Questions",
-  "price": "UGX. 25,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "p7_special_sets_series",
-  "name": "P7 Special Sets Series",
-  "price": "UGX. 15,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "interview_exams",
-  "name": "Teacher's Interview Exams",
-  "price": "UGX. 10,000",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "ple_spot_exams",
-  "name": "PLE Spot Exams",
-  "price": "UGX. 12,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "book_cover_hardcopies",
-  "name": "Book Cover Hardcopies",
-  "price": "UGX. 200 and 100",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "teachers_interview_papers",
-  "name": "Teacher's Interview Papers",
-  "price": "UGX. 15,000",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "weekend_tests",
-  "name": "Weekend Tests",
-  "price": "UGX. 5,000 per class",
-   "isFree": false,
-   "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "exams",
-  "name": "P.1 Science Exam",
-  "price": "UGX. 60,000",
-  "isFree": false,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "schemes_of_work",
-  "name": "P7 Mathematics Schemes of Work",
-  "price": "UGX. 5,000",
-  "isFree": false,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "textbooks",
-  "name": "P3 English Textbook",
-  "price": "UGX. 45,000",
-  "isFree": false,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "lesson_notes",
-  "name": "P6 History Lesson Notes",
-  "price": "UGX. 10,000",
-  "isFree": false,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "holiday_packages",
-  "name": "Christmas Holiday Package",
-  "price": "UGX. 500", // Free item
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
-},
-{
-  "category": "weekly_homeworks",
-  "name": "Week 1 Homeworks",
-  "price": "UGX. 500", // Free item
-  "link": "notes.pdf",
-  "isFree": true,
-  "pdflink": "locked files.zip", // PDF file link
+    <section id="lesson_notes" class="container mt-5">
+        <h3>Lesson Notes</h3>
+        <p>Access a treasure trove of lesson notes designed to enrich your teaching and captivate your pupils' interest.
+            Our lesson notes have been tried and tested by educators worldwide, with outstanding results. Join the
+            countless teachers who have utilized our lesson notes to create dynamic and engaging lessons that foster
+            deep learning and inspire academic excellence.
+        <p></p> Purchase the soft copies of our lesson notes for only Shs. 5,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-}
-];
-  
-// Function to render product cards
-function renderProductCards() {
-  const storeProductsContainer = document.getElementById('store-products');
-  const productCardTemplate = document.getElementById('product-card-template').innerHTML;
+    <section id="holiday_packages" class="container mt-5">
+        <h3>Holiday Packages</h3>
+        <p>Join the ranks of educators who have transformed vacations into valuable learning experiences for their
+            pupils. Our holiday packages offer a perfect blend of fun and education, ensuring that pupils return
+            refreshed, inspired, and ready to tackle new challenges. <p></p>Benefit from our holiday packages at an affordable
+            rate of Shs. 5000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-  let productCardsHTML = '';
-  products.forEach(product => {
-    // Modify button text and link based on whether the item is free or not
-    let buttonText, buttonLink;
-    if (product.isFree) {
-      buttonText = "FREE DOWNLOAD";
-      buttonLink = product.link;
-    } else {
-      buttonText = "Order Now!";
-      buttonLink = product.link;
-    }
+    <section id="weekly_homeworks" class="container mt-5">
+        <h3>Weekly Homeworks</h3>
+        <p>Elevate your pupils' learning with our professionally prepared weekly homework assignments. Experience the
+            positive impact of consistent and meaningful homework on pupil progress and academic achievement. Join the
+            multitude of educators who have witnessed remarkable improvements in pupil engagement, retention, and
+            academic performance with our weekly homeworks.
+        <p></p> Get the soft copies of our weekly homeworks for only Shs. 5,000 per class.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-    // Capitalize item name
-    const name = product.name.toUpperCase();
+    <section id="topical_questions" class="container mt-5">
+        <h3>Topical Questions</h3>
+        <p>Enhance your pupils' understanding and mastery of key concepts with our comprehensive collection of topical
+            questions. Thousands of educators have utilized our topical questions to reinforce learning, stimulate
+            critical thinking, and prepare pupils for exams. Witness firsthand the transformative power of focused
+            practice and targeted revision with our top-quality topical questions.
+        <p></p> Purchase the soft copies of our topical questions for just Shs. 8,000 per subject.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-    productCardsHTML += productCardTemplate
-      .replace('{{ category }}', product.category)
-      .replace('{{ name }}', name)
-      .replace('{{ price }}', product.isFree ? "FREE" : product.price) // Replace price with "FREE" if item is free
-      .replace('{{ button_text }}', buttonText)
-      .replace('{{ button_link }}', buttonLink);
-  });
+    <section id="learners_workbooks" class="container mt-5">
+        <h3>Learner's Workbooks</h3>
+        <p>Empower your pupils to take ownership of their learning journey with our learner's workbooks. Our workbooks
+            are designed to foster independent learning, critical thinking, and problem-solving skills. Join the growing
+            community of educators who have seen their pupils thrive academically and develop a lifelong love for
+            learning through the use of our learner's workbooks.
+        <p></p>Purchase the soft copies of our learner's workbooks at a reasonable price of Shs. 8,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-  storeProductsContainer.innerHTML = productCardsHTML;
-}
+    <section id="lesson_plan_templates" class="container mt-5">
+        <h3>Lesson Plan Templates</h3>
+        <p>Simplify your lesson planning process with our professionally crafted lesson plan templates. Designed by
+            experienced educators, our templates streamline lesson preparation, ensuring that every lesson is
+            well-structured, engaging, and aligned with learning objectives. Join those teachers who have saved valuable
+            time and energy with our user-friendly lesson plan templates.
+        <p></p> Avail the soft copies of our lesson plan templates for only Shs. 2,500.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-// Function to render cards from items
-function renderCards(items) {
-  const app = document.getElementById('app');
-  let html = '';
-  items.forEach(item => {
-    html += generateCard(item);
-  });
-  app.innerHTML = html;
-}
+    <section id="ple_pamphlets" class="container mt-5">
+        <h3>PLE Pamphlets</h3>
+        <p>Guide your pupils through the Primary Leaving Examinations (PLE) with our informative pamphlets. Trusted by
+            educators for their clarity and relevance, our PLE pamphlets provide valuable insights, tips, and strategies
+            to help pupils excel in their exams. Join the teachers who have relied on our PLE pamphlets to empower their
+            pupils and achieve outstanding results.
+        <p></p> Purchase the soft copies of our PLE pamphlets at an affordable price of Shs. 10,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
 
-// Render cards when the page loads
-window.onload = function () {
-  if (typeof products !== 'undefined') {
-    renderProductCards(); // Render product cards if products variable is defined
-  } else {
-    renderCards(items); // Render normal cards if products variable is not defined
-  }
-};
+    <section id="p7_topical_questions" class="container mt-5">
+        <h3>P.7 Topical Questions</h3>
+        <p>Prepare your Primary 7 pupils for success with our targeted P.7 topical questions. Our carefully set
+            questions cover key topics and concepts, allowing pupils to gain confidence and proficiency in their exam
+            preparations. Join the legions of educators who have witnessed the transformative impact of our P.7 topical
+            questions on pupil performance and success.
+        <p></p>Purchase the soft copies of our P.7 topical questions at a give-away fee of Shs. 8,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+    </section>
+
+    <!-- New Sections -->
+<section id="p7_special_sets" class="container mt-5">
+    <h3>P7 Special Sets Series</h3>
+    <p>Equip your Primary 7 pupils for excellence with our exclusive P7 Special Sets Series. Each set is strategically
+        curated to cover key topics and concepts essential for exam success. Witness remarkable improvements in pupil
+        performance and confidence with this invaluable resource, available now for only Shs. 15,000 per set.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
+
+<section id="interview_exams" class="container mt-5">
+    <h3>Interview Exams</h3>
+    <p>Prepare for your teaching career with our comprehensive Interview Exams series. Each set includes a variety of
+        questions and scenarios commonly encountered in interviews, ensuring you're fully prepared to ace your job
+        interviews. Boost your confidence and land your dream teaching job now for only Shs. 8,000 per set.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
+
+<section id="ple_spot_exams" class="container mt-5">
+    <h3>PLE Spot Exams</h3>
+    <p>Empower your pupils for success in the Primary Leaving Examinations (PLE) with our PLE Spot Exams. Each set
+        contains a selection of exam-style questions covering various subjects, providing invaluable practice and
+        preparation. Elevate your pupils' confidence and proficiency with this essential resource, available now for
+        only Shs. 12,000 per set.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
+
+<section id="book_cover_hardcopies" class="container mt-5">
+    <h3>Book Cover Hardcopies</h3>
+    <p>Protect your valuable textbooks and exercise books with our durable Book Cover Hardcopies. Available in two sizes (A4 and A3),
+        these covers ensure your books stay in pristine condition throughout the academic year. Invest in the longevity
+        of your educational resources now for just Shs. 200 each or Shs. 100 each, depending on the size.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
+
+<section id="teachers_interview_papers" class="container mt-5">
+    <h3>Teacher's Interview Papers</h3>
+    <p>Prepare for your teaching job interviews with confidence using our comprehensive Teacher's Interview Papers.
+        This essential resource includes a collection of interview questions, tips, and strategies to help you secure
+        your dream teaching position. Invest in your career success now for only Shs. 15,000.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
+
+<section id="weekend_tests" class="container mt-5">
+    <h3>Weekend Tests</h3>
+    <p>Elevate your class' learning experience with our Weekend Tests series. Each test is designed to
+        reinforce key concepts and topics covered during the week, ensuring maximum pupil engagement and retention.
+        Empower your learners for success now for just Shs. 5,000 per class.</p>
+        <a href="store.html" class="btn btn-danger btn-shake">Purchase Now ➮</a>
+</section>
 
 
-        // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Custom JavaScript for scroll to top button -->
+    <script>
+               // Smooth scrolling for navigation links
+               document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
-    });
-});
 
- // Filter by category function
- function filterCategory(event) {
-            var category = document.getElementById("category-filter").value;
-            var products = document.getElementsByClassName("store-product");
+        // Trigger confetti on page load
+        window.addEventListener('load', function() {
+            startConfetti();
+        });
 
-            if (category === "all") {
-                for (var i = 0; i < products.length; i++) {
-                    products[i].style.display = "block";
+        // Function to start confetti
+        function startConfetti() {
+            // Confetti initialization code
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            cx = ctx.canvas.width / 2;
+            cy = ctx.canvas.height / 2;
+
+            let confetti = [];
+            const confettiCount = 150;
+            const gravity = 1.5;
+            const terminalVelocity = 5;
+            const drag = 0.075;
+            const colors = [
+                { front: 'red', back: 'darkred' },
+                { front: 'green', back: 'darkgreen' },
+                { front: 'blue', back: 'darkblue' },
+                { front: 'yellow', back: 'darkyellow' },
+                { front: 'orange', back: 'darkorange' },
+                { front: 'pink', back: 'darkpink' },
+                { front: 'purple', back: 'darkpurple' },
+                { front: 'turquoise', back: 'darkturquoise' }
+            ];
+
+            // Initialize confetti
+            for (let i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    dimensions: { x: Math.random() * 10 + 10, y: Math.random() * 20 + 10 },
+                    position: { x: Math.random() * canvas.width, y: canvas.height - 1 },
+                    rotation: Math.random() * 2 * Math.PI,
+                    scale: { x: 1, y: 1 },
+                    velocity: { x: Math.random() * 50 - 25, y: Math.random() * -50 }
+                });
+            }
+
+            // Render confetti
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                confetti.forEach((confetto, index) => {
+                    let width = confetto.dimensions.x * confetto.scale.x;
+                    let height = confetto.dimensions.y * confetto.scale.y;
+
+                    // Move canvas to position and rotate
+                    ctx.translate(confetto.position.x, confetto.position.y);
+                    ctx.rotate(confetto.rotation);
+
+                    // Apply forces to velocity
+                    confetto.velocity.x -= confetto.velocity.x * drag;
+                    confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
+                    confetto.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
+
+                    // Set position
+                    confetto.position.x += confetto.velocity.x;
+                    confetto.position.y += confetto.velocity.y;
+
+                    // Delete confetti when out of frame
+                    if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
+
+                    // Loop confetto x position
+                    if (confetto.position.x > canvas.width) confetto.position.x = 0;
+                    if (confetto.position.x < 0) confetto.position.x = canvas.width;
+
+                    // Spin confetto by scaling y
+                    confetto.scale.y = Math.cos(confetto.position.y * 0.1);
+                    ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
+
+                    // Draw confetti
+                    ctx.fillRect(-width / 2, -height / 2, width, height);
+
+                    // Reset transform matrix
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                });
+
+                if (confetti.length > 0) {
+                    requestAnimationFrame(render);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.style.zIndex = -1;
                 }
+            }
+
+            render();
+        }
+        // Get the button
+        var scrollToTopBtn = document.getElementById("scrollToTop");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
             } else {
-                for (var i = 0; i < products.length; i++) {
-                    var product = products[i];
-                    if (product.classList.contains(category)) {
-                        product.style.display = "block";
-                    } else {
-                        product.style.display = "none";
-                    }
-                }
+                scrollToTopBtn.style.display = "none";
             }
         }
 
-        // Filter products by search input
-        const search = document.getElementById("search");
-        const productName = document.querySelectorAll(".product-details h2");
-        const noResult = document.querySelector(".no-result");
-
-        if (search) {
-            search.addEventListener("keyup", filterProducts);
+        // When the user clicks on the button, scroll to the top of the document
+        function scrollToTop() {
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
-
-// Filter products by search input
-function filterProducts(e) {
-    const text = e.target.value.toLowerCase();
-    const productDetails = document.querySelectorAll(".product-details");
-
-    productDetails.forEach((product) => {
-        const productName = product.querySelector("h2").textContent.toLowerCase();
-
-        if (productName.includes(text)) {
-            product.parentElement.style.display = "block";
-        } else {
-            product.parentElement.style.display = "none";
-        }
-    });
-
-    // Show or hide the "no result" message based on the filtered products
-    const noResult = document.querySelector(".no-result");
-    const visibleProducts = document.querySelectorAll('.store-product[style="display: block;"]');
-
-    if (visibleProducts.length > 0) {
-        noResult.style.display = "none";
-    } else {
-        noResult.style.display = "block";
-    }
-}
-
-
-
-// Get the button
-var scrollToTopBtn = document.getElementById("scrollToTop");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopBtn.style.display = "block";
-    } else {
-        scrollToTopBtn.style.display = "none";
-    }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function scrollToTop() {
-    // Scroll to top smoothly
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
- // When the DOM content is fully loaded, render the cards
- document.addEventListener('DOMContentLoaded', function () {
-            // Define your items array with necessary data
-            const items = products; // Example: you can set items equal to products array
-
-            // Render cards when the page loads
-            renderCards(items);
-        });
-
-// When the DOM content is fully loaded, render the cards
-document.addEventListener('DOMContentLoaded', function () {
-      // Define your items array with necessary data
-      const items = products; // Assuming products array is defined elsewhere
-
-      // Render cards when the page loads
-      renderCards(items);
-    });
-
-    // Function to render cards from items
-    function renderCards(items) {
-      const app = document.getElementById('app');
-      let html = '';
-      items.forEach(item => {
-        html += generateCard(item);
-      });
-      app.innerHTML = html;
-    }
-
-    // Define the generateCard function
-    function generateCard(item) {
-      return `
-        <div class="store-product ${item.category}">
-            <div class="product-details">
-                <h2>${item.name}</h2>
-                <p>${item.price}</p>
-                <a href="${item.pdflink}" onclick="showPasswordProtectedModal()" download>
-                    <i class="fas fa-download"></i> <b>Order Now!</b>
-                </a>
-            </div>
-        </div>`;
-    }
-    
-
-    // Function to show password protected modal
-    function showPasswordProtectedModal() {
-      $('#passwordProtectedModal').modal('show');
-    }
-    </script>
-    <!-- <script src="script.js"></script> -->
-    <center><br><br><br><br>
+    </script><br>
+     <div class="container">
+        <p><strong><h3>CONTACT US</h3> </strong>
+            <strong>EMAIL:</strong> <a href="mailto:dicktuge@gmail.com">dicktuge@gmail.com</a>
+            <br><strong>PHONE:</strong> <a href="tel:+256775787978"><br>0775787978</a>
+            <br> <a href="tel:+256742845900">0742845900</a>
+            <br><strong>LOCATION:</strong><p>6 Miles off Gayaza Road-Kampala</p>Wilsem Plaza Room Number 03 <p></p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.725161469977!2d32.577275971490636!3d0.3915380996046231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177db0891f472cc1%3A0xfa65a91d8342630a!2sGayaza%20-Kampala%20Rd!5e0!3m2!1sen!2sug!4v1710436920884!5m2!1sen!2sug" width="250" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </p>
+    </div>
+    <center>
         <!-- Footer -->
         <footer class="footer" id="contact">
             <div class="container">
-                <p>&copy; 2024 OSEB</p>
+                <p>&copy; 2024 Outreach Schools Examinations Board</p>
                 <p>Coded with <span class="heart">&hearts;</span> by <a href="https://fresh-teacher.github.io"> Fresh Teacher</a></p>
 
             </div>
         </footer>
         
     </center>
+
+    <!-- End of Footer -->
 </body>
 
 </html>
