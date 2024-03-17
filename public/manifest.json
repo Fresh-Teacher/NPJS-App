@@ -1,6 +1,6 @@
 {
-  "short_name": "OSEB App",
-  "name": "OSEB App",
+  "short_name": "Password Generator",
+  "name": "Password Generator",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,7 +8,7 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo192.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
